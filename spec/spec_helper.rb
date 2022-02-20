@@ -10,6 +10,7 @@ require 'rspec'
 require 'rack/test'
 require 'rspec/json_expectations'
 require 'database_cleaner'
+require 'faker'
 
 Dir['./spec/shared/**/*.rb'].sort.each { |f| require f }
 Dir['./spec/*/factories/**/*.rb'].sort.each { |f| require f }
