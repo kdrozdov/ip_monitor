@@ -1,0 +1,46 @@
+inherit_from: ../.rubocop.yml
+
+require:
+  - rubocop-rspec
+
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+
+Layout:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/DescribedClass:
+  Enabled: false # In case of bug: https://github.com/rubocop-hq/rubocop-rspec/issues/1038
+
+RSpec/DescribeClass:
+  Exclude:
+    - '**/api*/**/*.rb'
+
+RSpec/ContextWording:
+  Exclude:
+    - 'shared/examples/*.rb'
+
+RSpec/NestedGroups:
+  Max: 4
+
+# 18
+# TODO: FIX IT ALL!
+RSpec/MessageSpies:
+  Enabled: false
+
+# 31
+# TODO: check and may be fix
+RSpec/LetSetup:
+  Enabled: false
