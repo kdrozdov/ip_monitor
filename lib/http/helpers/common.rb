@@ -16,7 +16,7 @@ module Http
 
       def submit!(form, notify: false)
         form = form.new(params) if form.is_a?(Class)
-        return form if form.submit
+        return form.result if form.submit
 
         Notifier.warning('Validation error', errors: form.errors) if notify
 

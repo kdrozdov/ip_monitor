@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 describe 'GET /health', type: :request do
-  include Rack::Test::Methods
-
   subject(:request!) { get '/api/v1/health' }
 
   context 'when there is no connection' do

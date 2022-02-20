@@ -4,19 +4,22 @@ class ApiV1
   class Monitoring < Base
     helpers Http::Helpers::Common
 
-    post '/ip', provides: :json do
-      submit! Forms::StartIpObserving.new(params) do |form|
-        check! Scenarios::UpsertSubscription.call(form.result) do |interactor|
-          Serializers::Subscription.serialize(interactor.data).to_json
-        end
+    include ::Monitoring
+
+    post '/ip_addresses', provides: :json do
+      handle do
+        valid_params = submit! Forms::StartIpObserving.new(params)
+        result = perform! Scenarios::StartIpObserving.call(valid_params)
+
+        Serializers::IpAddress.serialize(result.data).to_json
       end
     end
 
-    delete '/ip/:ip', provides: :json do
-      submit! Forms::UpsertSubscription.new(params, user_uid: current_user.uid), Notifier: true do |form|
-        check! Scenarios::UpsertSubscription.call(form.result) do |interactor|
-          Serializers::Subscription.serialize(interactor.data).to_json
-        end
+    delete '/ip_addresses/:ip', provides: :json do
+      handle do
+        result = perform! Scenarios::StopIpObserving.call(ip: params[:ip])
+
+        Serializers::IpAddress.serialize(result.data).to_json
       end
     end
   end
