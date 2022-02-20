@@ -1,0 +1,91 @@
+require:
+  - rubocop-rspec
+  - rubocop-rake
+  - rubocop-sequel
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - "**/tmp/**/*"
+    - "**/script/**/*"
+    - Rakefile
+    - "db/schema.rb"
+    - "db/migrate/*"
+    - "lib/tasks/config.rake"
+  UseCache: true
+  TargetRubyVersion: 2.7.3
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Exclude:
+    - 'domains/*/*.rb'
+
+Layout/HashAlignment:
+  Exclude:
+    - "domains/**/mappers/**/*"
+
+Metrics/AbcSize:
+  Exclude:
+    - "domains/**/adapters/**/*"
+    - "domains/**/scenarios/**/*"
+    - "domains/**/receivers/**/*"
+    - "domains/**/mappers/**/*"
+    - "domains/**/forms/**/*"
+    - "domains/**/clients/**/*"
+    - "lib/calculators/*"
+    - "lib/tasks/*"
+
+Layout:
+  Max: 120
+  IgnoredPatterns: ['\s+\#\s+.*$']
+  Exclude:
+    - "config/**/*"
+    - "domains/**/adapters/**/*"
+    - "domains/**/scenarios/**/*"
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: 'indented'
+
+# Configuration parameters: CountComments.
+Metrics/MethodLength:
+  Exclude:
+    - "config/**/*"
+    - "domains/**/scenarios/**/*"
+    - "**/mappers/**/*"
+    - "domains/**/clients/**/*"
+    - "domains/domains/publishers/adapter.rb"
+    - "domains/**/forms/**/*"
+
+Metrics/BlockLength:
+  Exclude:
+    - "config/**/*"
+    - "api/v1.rb"
+    - "**/validations/**/*"
+    - "**/forms/**/*"
+    - "lib/tasks/**/*"
+    - "lib/capistrano/**/*"
+
+Layout/CommentIndentation:
+  Exclude:
+    - "Gemfile"
+
+Style/Documentation:
+  Include:
+    - "api/services"
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/Attr:
+  Exclude:
+    - "domains/*"
+    - "domains/**/*"
+
+Style/AccessorGrouping:
+  Exclude:
+    - "domains/*"
+    - "domains/**/*"
+
+Lint/MissingSuper:
+  Enabled: false
+
+# For more information: https://docs.rubocop.org/rubocop/versioning.html
