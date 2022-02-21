@@ -10,6 +10,8 @@ services:
       - .:/app
     links:
       - db
+    environment:
+      - DB_HOST=db
     restart: always
 
   pinger:
@@ -20,6 +22,8 @@ services:
       - .:/app
     links:
       - db
+    environment:
+      - DB_HOST=db
     restart: always
 
   db:

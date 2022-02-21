@@ -11,7 +11,7 @@ class ApiV1
     end
 
     error Exception do |e|
-      Notifier.default.error(e)
+      Notifier.error(e)
 
       status 500
     end
