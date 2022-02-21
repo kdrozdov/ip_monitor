@@ -22,6 +22,10 @@ module Monitoring
         )
       end
 
+      def all_observable
+        read_all scope(dataset).where(observable: true)
+      end
+
       private
 
       def dataset

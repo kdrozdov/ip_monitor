@@ -16,14 +16,13 @@ module Monitoring
 
         def to_row(input)
           attrs = input.to_h
-          row = {
-            ip:         attrs[:ip],
-            observable: attrs[:observable]
-          }
-          row[:id]         = attrs[:id]         if attrs.key?(:id)
-          row[:created_at] = attrs[:created_at] if attrs.key?(:created_at)
-          row[:updated_at] = attrs[:updated_at] if attrs.key?(:updated_at)
-          row
+          {}.tap do |row|
+            row[:ip]         = attrs[:ip]
+            row[:id]         = attrs[:id]         if attrs.key?(:id)
+            row[:observable] = attrs[:observable] if attrs.key?(:observable)
+            row[:created_at] = attrs[:created_at] if attrs.key?(:created_at)
+            row[:updated_at] = attrs[:updated_at] if attrs.key?(:updated_at)
+          end
         end
       end
     end
