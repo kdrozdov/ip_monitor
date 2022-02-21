@@ -71,6 +71,7 @@ GEM
     minitest (5.14.4)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
+    net-ping (2.0.8)
     nio4r (2.5.8)
     overcommit (0.57.0)
       childprocess (>= 0.6.3, < 5)
@@ -158,6 +159,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   byebug
+  concurrent-ruby
   database_cleaner (~> 1.7.0)
   dotenv
   dry-validation
@@ -165,6 +167,7 @@ DEPENDENCIES
   faker
   jsonapi-serializers
   luna_park (~> 0.11.1)
+  net-ping
   overcommit
   pg (~> 0.18)
   puma (~> 5.5.1)
