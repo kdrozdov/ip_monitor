@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require_relative '../../config/boot'
 
-CYCLE_PERIOD = 5
+CYCLE_PERIOD = 10
 
 thread_pool       = Concurrent::FixedThreadPool.new(10)
 ip_addresses_repo = Monitoring::Repositories::IpAddress.new
