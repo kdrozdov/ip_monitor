@@ -13,7 +13,7 @@ module Monitoring
         @to = to
       end
 
-      def call
+      def call # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
         ds = dataset.select(
           Sequel.function(:count, '*').as(:count_with_rtt),
           Sequel.function(:min, :rtt).as(:min_rtt),
@@ -38,8 +38,8 @@ module Monitoring
       def for_ip_over_period(scope)
         scope
           .where(ip: ip)
-          .where{ |r| r.time >= from }
-          .where{ |r| r.time <= to }
+          .where { |r| r.time >= from }
+          .where { |r| r.time <= to }
       end
 
       def total_count

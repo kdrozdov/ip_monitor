@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 describe 'DELETE /api/v1/ip_addresses/:ip' do
   subject(:request!) { delete "/api/v1/ip_addresses/#{ip}" }

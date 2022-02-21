@@ -34,7 +34,7 @@ module Http
 
         if notify
           Notifier.warning('Business logic error', error: interactor.failure.message,
-                                                 details: interactor.failure.details)
+                                                   details: interactor.failure.details)
         end
 
         throw :endpoint_failure, status: 422,
