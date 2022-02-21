@@ -3,7 +3,7 @@
 module Monitoring
   module Mappers
     class IpAddress < LunaPark::Mappers::Simple
-       class << self
+      class << self
         def from_row(row)
           {
             id:         row[:id],
@@ -24,7 +24,7 @@ module Monitoring
             row[:updated_at] = attrs[:updated_at] if attrs.key?(:updated_at)
           end
         end
-      end
+     end
     end
   end
 end

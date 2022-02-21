@@ -9,7 +9,7 @@ module RepoMixins
       new_attrs = from_row(new_row)
       entity.set_attributes(new_attrs)
       entity
-    rescue Sequel::UniqueConstraintViolation => e
+    rescue Sequel::UniqueConstraintViolation
       raise ::Common::Errors::UniquenessError.new(model: entity.class.name)
     end
   end

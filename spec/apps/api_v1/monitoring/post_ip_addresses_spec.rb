@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 describe 'POST /api/v1/ip_addresses' do
   subject(:request!) { post '/api/v1/ip_addresses', request_body }

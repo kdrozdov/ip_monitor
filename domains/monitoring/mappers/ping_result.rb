@@ -3,7 +3,7 @@
 module Monitoring
   module Mappers
     class PingResult < LunaPark::Mappers::Simple
-       class << self
+      class << self
         def from_row(row)
           {
             time: row[:time],
@@ -20,7 +20,7 @@ module Monitoring
             row[:rtt]  = attrs[:rtt]
           end
         end
-      end
+     end
     end
   end
 end
