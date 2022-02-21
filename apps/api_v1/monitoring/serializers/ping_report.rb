@@ -3,7 +3,7 @@
 class ApiV1
   class Monitoring
     module Serializers
-      class IpReport < Abstract::Serializer
+      class PingReport < Abstract::Serializer
         attribute(:ip)
         attribute(:avg_rtt)
         attribute(:min_rtt)
@@ -13,7 +13,7 @@ class ApiV1
         attribute(:losses)
 
         def type
-          'ip_reports'
+          'ping_reports'
         end
 
         def id

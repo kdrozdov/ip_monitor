@@ -23,15 +23,15 @@ class ApiV1
       end
     end
 
-    get '/ip_reports/:ip', provides: :json do
+    get '/ping_reports/:ip', provides: :json do
       handle do
-        result = perform! Scenarios::BuildIpReport.call(
+        result = perform! Scenarios::BuildPingReport.call(
           ip: params[:ip],
           from: Time.parse(params[:from]),
           to: Time.parse(params[:to])
         )
 
-        Serializers::IpReport.serialize(result.data).to_json
+        Serializers::PingReport.serialize(result.data).to_json
       end
     end
   end

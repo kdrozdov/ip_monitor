@@ -2,18 +2,18 @@
 
 module Monitoring
   module Scenarios
-    class BuildIpReport < LunaPark::UseCases::Scenario
+    class BuildPingReport < LunaPark::UseCases::Scenario
       include LunaPark::Extensions::Injector
 
       error :no_metrics_found, 'No metrics found for the given interval'
 
-      dependency(:ip_report_query) { Queries::IpReport }
+      dependency(:ping_report_query) { Queries::PingReport }
 
       attr_accessor :ip, :from, :to
 
       def call!
         error :no_metrics_found unless report_data[:total_count].positive?
-        Dto::IpReport.new(
+        Dto::PingReport.new(
           ip: ip,
           avg_rtt: report_data[:avg_rtt],
           min_rtt: report_data[:min_rtt],
@@ -35,7 +35,7 @@ module Monitoring
       end
 
       def report_data
-        @report_data ||= ip_report_query.call(ip: ip, from: from, to: to)
+        @report_data ||= ping_report_query.call(ip: ip, from: from, to: to)
       end
     end
   end

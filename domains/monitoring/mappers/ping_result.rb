@@ -2,7 +2,7 @@
 
 module Monitoring
   module Mappers
-    class IpMetric < LunaPark::Mappers::Simple
+    class PingResult < LunaPark::Mappers::Simple
        class << self
         def from_row(row)
           {
