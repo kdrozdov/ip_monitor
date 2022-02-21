@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 require_relative '../../config/boot'
 
-CYCLE_PERIOD = 10
-
 thread_pool       = Concurrent::FixedThreadPool.new(10)
 ip_addresses_repo = Monitoring::Repositories::IpAddress.new
-ip_metrics_repo   = Monitoring::Repositories::IpMetric.new
+ping_results_repo = Monitoring::Repositories::PingResult.new
 
 loop do
   addresses = ip_addresses_repo.all_observable
@@ -17,8 +15,8 @@ loop do
     end
   end
   ping_results = executors.map(&:value!).compact
-  ip_metrics_repo.multi_insert(ping_results)
+  ping_results_repo.multi_insert(ping_results)
 
-  puts "Iteration succees; Next in #{CYCLE_PERIOD}"
-  sleep(CYCLE_PERIOD)
+  puts "Iteration succees; Next in #{CONFIG.pinger_cycle_delay}"
+  sleep(CONFIG.pinger_cycle_delay)
 end

@@ -2,18 +2,18 @@
 
 module Monitoring
   module Repositories
-    class IpMetric < LunaPark::Repositories::Sequel
+    class PingResult < LunaPark::Repositories::Sequel
       include RepoMixins::Common
       include RepoMixins::Create
 
-      entity Entities::IpMetric
-      mapper Mappers::IpMetric
+      entity Entities::PingResult
+      mapper Mappers::PingResult
 
       def for_ip_over_period(ip:, from:, to:)
         read_all dataset
           .where(ip: ip)
-          .where{ time >= from }
-          .where{ time <= to }
+          .where{ |r| r.time >= from }
+          .where{ |r| r.time <= to }
       end
 
       def multi_insert(input)
@@ -25,7 +25,7 @@ module Monitoring
       private
 
       def dataset
-        DB[:ip_metrics]
+        DB[:ping_results]
       end
     end
   end

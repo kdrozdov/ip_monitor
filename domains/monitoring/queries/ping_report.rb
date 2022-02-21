@@ -2,7 +2,7 @@
 
 module Monitoring
   module Queries
-    class IpReport
+    class PingReport
       extend LunaPark::Extensions::Callable
 
       attr_reader :ip, :from, :to
@@ -47,7 +47,7 @@ module Monitoring
       end
 
       def dataset
-        DB[:ip_metrics]
+        DB[:ping_results]
       end
     end
   end

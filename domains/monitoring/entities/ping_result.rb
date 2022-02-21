@@ -2,9 +2,9 @@
 
 module Monitoring
   module Entities
-    class IpMetric < LunaPark::Entities::Attributable
-      attr :time
+    class PingResult < LunaPark::Entities::Attributable
       attr :ip, IPAddr, :wrap
+      attr :time
       attr :rtt
     end
   end
