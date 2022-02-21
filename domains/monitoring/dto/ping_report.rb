@@ -2,7 +2,7 @@
 
 module Monitoring
   module Dto
-    class IpReport < Abstract::Dto
+    class PingReport < Abstract::Dto
       attr :ip
       attr :avg_rtt
       attr :min_rtt

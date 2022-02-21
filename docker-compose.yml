@@ -12,10 +12,10 @@ services:
       - db
     restart: always
 
-  metrics_collector:
+  pinger:
     build:
       context: .
-    command:  /bin/bash -c "bundle exec ruby apps/daemons/metrics_collector.rb"
+    command:  /bin/bash -c "bundle exec ruby apps/daemons/pinger.rb"
     volumes:
       - .:/app
     links:

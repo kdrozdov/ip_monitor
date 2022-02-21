@@ -29,5 +29,5 @@ curl --location --request DELETE 'http://localhost:3000/api/v1/ip_addresses/127.
 
 ### Получение статистики для ip адреса
 ```
-curl --location --request GET 'http://localhost:3000/api/v1/ip_reports/127.0.0.1?from=2022-02-21T10:00:00Z&to=2022-02-21T23:00:00Z'
+curl --location --request GET 'http://localhost:3000/api/v1/ping_reports/127.0.0.1?from=2022-02-21T10:00:00Z&to=2022-02-21T23:00:00Z'
 ```
