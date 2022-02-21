@@ -29,6 +29,9 @@ gem 'rake'
 
 # gem 'rest-client'
 
+gem 'net-ping'
+gem 'concurrent-ruby'
+
 group :development, :test do
   gem 'awesome_print'
   gem 'byebug'

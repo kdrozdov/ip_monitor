@@ -22,5 +22,17 @@ class ApiV1
         Serializers::IpAddress.serialize(result.data).to_json
       end
     end
+
+    get '/ip_reports/:ip', provides: :json do
+      handle do
+        result = perform! Scenarios::BuildIpReport.call(
+          ip: params[:ip],
+          from: Time.parse(params[:from]),
+          to: Time.parse(params[:to])
+        )
+
+        Serializers::IpReport.serialize(result.data).to_json
+      end
+    end
   end
 end

@@ -13,9 +13,7 @@ class ApiV1
           'ip_addresses'
         end
 
-        def self_link
-          "/api/v1/#{type}/#{object.ip}/metrics"
-        end
+        def self_link; end
       end
     end
   end
