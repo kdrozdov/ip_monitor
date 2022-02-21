@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 describe 'GET /api/v1/ping_reports/:ip' do
   subject(:request!) { get "/api/v1/ping_reports/#{ip}?from=#{from}&to=#{to}" }
@@ -33,7 +34,6 @@ describe 'GET /api/v1/ping_reports/:ip' do
 
   it 'return code 200' do
     request!
-    byebug
     expect(last_response.status).to eq(200)
   end
 

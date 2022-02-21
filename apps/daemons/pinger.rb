@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require_relative '../../config/boot'
 
 thread_pool       = Concurrent::FixedThreadPool.new(10)
@@ -10,7 +11,7 @@ loop do
   executors = addresses.map do |address|
     Concurrent::Future.execute({ executor: thread_pool }) do
       time = Time.now
-      ping = Net::Ping::External.new(address.ip.to_s).tap { |p| p.ping }
+      ping = Net::Ping::External.new(address.ip.to_s).tap(&:ping)
       { ip: address.ip, rtt: ping.duration, time: time }
     end
   end
