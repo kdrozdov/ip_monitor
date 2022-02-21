@@ -1,0 +1,2 @@
+docker-compose up -d db
+docker-compose exec db /bin/bash -c "psql -U ruby"

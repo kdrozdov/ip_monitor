@@ -1,33 +1,35 @@
-version: "3.9"  # optional since v1.27.0
+version: "3.9"
 
 services:
   app:
     build:
       context: .
-    command: /bin/bash -c "while true; do sleep 1; done"
     ports:
       - "127.0.0.1:3000:3000"
     volumes:
       - .:/app
     links:
-      - pg
-    environment:
-      - INSTANCE
-      - DB_HOST=pg
+      - db
     restart: always
 
-  pg:
-    image: postgres
+  metrics_collector:
+    build:
+      context: .
+    command:  /bin/bash -c "bundle exec ruby apps/daemons/metrics_collector.rb"
     volumes:
-      - ./local/postgres/pgdata:/var/lib/postgresql/data/pgdata
+      - .:/app
+    links:
+      - db
+    restart: always
+
+  db:
+    image: timescale/timescaledb:latest-pg12
+    volumes:
+      - database:/var/lib/postgresql/data/pg_data
     environment:
       POSTGRES_USER: ruby
       POSTGRES_PASSWORD: ruby
       PGDATA: /var/lib/postgresql/data/pgdata
 
-  dozzle:
-    image: amir20/dozzle:latest
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    ports: ['127.0.0.1:5071:8080']
-    restart: always
+volumes:
+  database:
