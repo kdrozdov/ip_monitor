@@ -1,8 +1,6 @@
 ## Запуск проекта
 
 ```
-git checkout feature/ping_report
-
 ./bin/docker-db-prepare
 docker-compose up
 ```

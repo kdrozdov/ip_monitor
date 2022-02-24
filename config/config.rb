@@ -14,6 +14,7 @@ CONFIG = EnvConfiguration.new(check_required: ENV['STRICT_CONFIG'] == 'true') do
   required(:project_name, 'PROJECT_NAME')
   required(:app_env,      'APP_ENV') { |v| AppEnvironment.new(v, allowed: %w[production development test]) }
   required(:default_severity, 'DEFAULT_SEVERITY', &:to_sym)
+  required(:pinger_cycle_delay, 'PINGER_CYCLE_DELAY') { |v| Integer(v) }
 
   namespace(:puma) do
     required(:pid,         'PUMA_PID')

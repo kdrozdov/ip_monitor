@@ -16,7 +16,7 @@ module Http
 
       def submit!(form, notify: false)
         form = form.new(params) if form.is_a?(Class)
-        return form if form.submit
+        return form.result if form.submit
 
         Notifier.warning('Validation error', errors: form.errors) if notify
 
@@ -34,7 +34,7 @@ module Http
 
         if notify
           Notifier.warning('Business logic error', error: interactor.failure.message,
-                                                 details: interactor.failure.details)
+                                                   details: interactor.failure.details)
         end
 
         throw :endpoint_failure, status: 422,

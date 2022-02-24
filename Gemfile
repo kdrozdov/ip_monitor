@@ -27,7 +27,10 @@ gem 'dotenv'
 gem 'racksh'
 gem 'rake'
 
-gem 'rest-client'
+# gem 'rest-client'
+
+gem 'concurrent-ruby'
+gem 'net-ping'
 
 group :development, :test do
   gem 'awesome_print'
@@ -45,6 +48,7 @@ end
 
 group :test do
   gem 'database_cleaner', '~> 1.7.0'
+  gem 'faker'
   gem 'rspec-json_expectations'
   gem 'webmock'
 end
