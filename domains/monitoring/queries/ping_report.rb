@@ -20,13 +20,14 @@ module Monitoring
           Sequel.function(:max, :rtt).as(:max_rtt),
           Sequel.function(:avg, :rtt).as(:avg_rtt),
           Sequel.function(:stddev_samp, :rtt).as(:stddev_rtt),
-          Sequel.lit('percentile_cont(0.5) WITHIN GROUP (ORDER BY rtt) as median_rtt')
+          Sequel.lit('percentile_cont(0.5) WITHIN GROUP (ORDER BY rtt) as median_rtt'),
+          dataset.select(Sequel.function(:count, '*')).as(:total_count)
         )
 
         ds = for_ip_over_period(ds)
         ds = with_rtt(ds)
 
-        ds.first.merge(total_count: total_count)
+        ds.first
       end
 
       private
