@@ -18,6 +18,6 @@ loop do
   ping_results = executors.map(&:value!).compact
   ping_results_repo.multi_insert(ping_results)
 
-  puts "Iteration succees; Next in #{CONFIG.pinger_cycle_delay}"
+  puts "Iteration succeess; Next in #{CONFIG.pinger_cycle_delay}"
   sleep(CONFIG.pinger_cycle_delay)
 end

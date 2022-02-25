@@ -3,7 +3,6 @@
 TAGS
 .DS_Store
 .tool-versions
-privatekey
 
 .rbenv-vars
 .rvmrc
@@ -17,7 +16,6 @@ privatekey
 !.env.default
 !.env.*.default
 
-privatekey
 local/
 tmp/
 log/
