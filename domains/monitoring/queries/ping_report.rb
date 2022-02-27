@@ -43,10 +43,6 @@ module Monitoring
           .where { |r| r.time <= to }
       end
 
-      def total_count
-        for_ip_over_period(dataset).count
-      end
-
       def dataset
         DB[:ping_results]
       end
